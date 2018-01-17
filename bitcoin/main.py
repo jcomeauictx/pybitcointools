@@ -10,7 +10,9 @@ import base64
 import time
 import random
 import hmac
+import logging
 from bitcoin.ripemd import *
+logging.basicConfig(level=logging.DEBUG if __debug__ else logging.INFO)
 
 # Elliptic curve parameters (secp256k1)
 
@@ -495,6 +497,7 @@ def decode_sig(sig):
         bytez = base64.b64decode(sig)
     except binascii.Error:
         bytez = sig
+    logging.debug('decode_sig bytez: %r', bytez)
     return from_byte_to_int(bytez[0]), decode(bytez[1:33], 256), decode(bytez[33:], 256)
 
 # https://tools.ietf.org/html/rfc6979#section-3.2
