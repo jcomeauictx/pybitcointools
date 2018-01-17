@@ -500,7 +500,7 @@ def decode_sig(sig):
     logging.debug('decode_sig bytez: %r', bytez)
     parts = (from_byte_to_int(bytez[0]),
              decode(bytez[1:33], 256),
-             decode(bytez[33:], 256)
+             decode(bytez[33:], 256))
     logging.debug('decode_sig parts: %s', repr(parts))
     return parts
 
