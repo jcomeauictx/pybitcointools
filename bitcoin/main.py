@@ -473,8 +473,11 @@ def is_pubkey(pubkey):
         return False
 
 def is_address(addr):
-    ADDR_RE = re.compile("^[123mn][a-km-zA-HJ-NP-Z0-9]{26,33}$")
-    return bool(ADDR_RE.match(addr))
+    try:
+        ADDR_RE = re.compile("^[123mn][a-km-zA-HJ-NP-Z0-9]{26,33}$")
+        return bool(ADDR_RE.match(addr))
+    except TypeError:
+        return False
 
 
 # EDCSA
