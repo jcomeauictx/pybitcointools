@@ -543,6 +543,7 @@ def ecdsa_sign(msg, priv):
 
 def ecdsa_raw_verify(msghash, vrs, pub):
     v, r, s = vrs
+    logging.debug('msghash: %r, vrs: %s, pub: %r', msghash, repr(vrs), pub)
     if not (27 <= v <= 34):
         return False
 
