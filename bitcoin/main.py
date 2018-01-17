@@ -498,7 +498,11 @@ def decode_sig(sig):
     except binascii.Error:
         bytez = sig
     logging.debug('decode_sig bytez: %r', bytez)
-    return from_byte_to_int(bytez[0]), decode(bytez[1:33], 256), decode(bytez[33:], 256)
+    parts = (from_byte_to_int(bytez[0]),
+             decode(bytez[1:33], 256),
+             decode(bytez[33:], 256)
+    logging.debug('decode_sig parts: %s', repr(parts))
+    return parts
 
 # https://tools.ietf.org/html/rfc6979#section-3.2
 
