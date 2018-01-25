@@ -434,10 +434,11 @@ def mktx(*args):
             txobj["ins"].append(i)
         else:
             if isinstance(i, dict) and "output" in i:
+                script = i.get("script", "")
                 i = i["output"]
             txobj["ins"].append({
                 "outpoint": {"hash": i[:64], "index": int(i[65:])},
-                "script": "",
+                "script": script,
                 "sequence": 4294967295
             })
     for o in outs:
