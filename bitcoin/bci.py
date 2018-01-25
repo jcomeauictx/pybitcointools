@@ -5,11 +5,15 @@ import sys
 
 from bitcoin.main import from_string_to_bytes
 
-
+# fix Python3 incompatibilities
 try:
     from urllib.request import build_opener
 except:
     from urllib2 import build_opener
+try:
+    basestring
+except NameError:
+    basestring = str
 
 
 # Makes a request to a given URL (first arg) and optional params (second arg)
